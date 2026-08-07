@@ -1313,9 +1313,8 @@ def try_start_public_tunnel():
 
 # ===== RUN =====
 
-if __name__ == "__main__":
-    init_db()
-    print("🚀 HM Chat Server starting on http://0.0.0.0:5000")
-    print(f"📡 Invite links will use: {PUBLIC_BASE_URL}")
-    try_start_public_tunnel()
-    socketio.run(app, host="0.0.0.0", port=5000, debug=True, allow_unsafe_werkzeug=True)
+if __name__ == '__main__':
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+    
